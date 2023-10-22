@@ -8,10 +8,17 @@ s = BeautifulSoup(html.content, 'html.parser')
 
 string = str(s)
 dataByYear = []
+lines = []
+string.strip()
+
 
 
 for letter in string:
-    triplet = [] 
+    triplet = ""
     dataByYear.append(letter)
+
+for character in dataByYear:
+    if character.isnumeric() == False:
+        dataByYear.pop(character)
 
 print(dataByYear)
