@@ -5,33 +5,26 @@ url = 'https://data.giss.nasa.gov/gistemp/graphs/graph_data/Global_Mean_Estimate
 html = requests.get(url)
 # print(html.text)
 
-# s = BeautifulSoup(html.content, 'html.parser')
+s = BeautifulSoup(html.content, 'html.parser')
 
-# raw = str(s)
-# dataByYear = []
-# lines = []
+raw = str(s)
+dataByYear = []
+lines = []
 
-# for letter in raw:
-#     dataByYear.append(letter)
-#     if letter == "\n":
-#         lines.append(dataByYear)
-#         dataByYear = []
+for letter in raw:
+    dataByYear.append(letter)
+    if letter == "\n":
+        lines.append(dataByYear)
+        dataByYear = []
 
-for line in html.text.split('\n'):
-#     line = str(line)
-    # print(line)
-    print(line.split('\s+'))
-    # for letter in line:
-    #     if letter == " ":
-    #         print(line.split('\s+'))
+for line in lines:
+    lines[lines.index(line)] = ''.join(line)
 
+lines = lines[5:]
+    
+lines = (list(map(lambda x: list(map(float, x.split())), lines)))
 
+for i in range(len(lines)):
+    print(lines[i])
 
-
-# for line in lines:
-#     lines[lines.index(line)] = ''.join(line)
-
-# lines = lines[5:]
-
-# for i in range(len(lines)):
-#     print(lines[i])
+finalData = lines
