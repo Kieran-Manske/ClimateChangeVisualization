@@ -28,3 +28,12 @@ for i in range(len(lines)):
     print(lines[i])
 
 finalData = lines
+
+
+
+valueLabel = 3
+firstIndex = finalData.index(valueLabel)
+temp =  finalData[firstIndex][2]
+temp * 140
+
+print(temp)
